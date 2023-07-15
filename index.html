@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <section>
+    <form>
+      <input type="text" id="input_ssidName" name="ssidName" placeholder="SSID..." onchange="generateQrCode()"
+        required />
+      <input type="text" id="input_password" name="password" placeholder="Password..." onchange="generateQrCode()"
+        required />
+      <input type="checkbox" id="input_isHidden" name="isHidden" onchange="generateQrCode()"><label for="isHidden">Is
+        hidden
+        ?</label><br><br>
+    </form>
+    <div id="qrCode"></div>
+  </section>
+
+  <script>
+    function generateQrCode() {
+      let ssidName = document.getElementById("input_ssidName").value;
+      let password = document.getElementById("input_password").value;
+      let isHidden = document.getElementById("input_isHidden").checked;
+
+      let wifiURI = `WIFI:T:WPA;S:${ssidName};H:${isHidden};P:${password};;`;
+
+      let qrCodeContainer = document.getElementById("qrCode");
+      qrCodeContainer.innerHTML = "";
+      new QRCode(qrCodeContainer, wifiURI);
+    }
+  </script>
+</body>
+
+</html>
