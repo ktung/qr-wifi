@@ -2,10 +2,20 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     form,
     input {
       font-family: monospace;
+    }
+
+    input {
+      padding: 0.25rem;
+      box-sizing: content-box;
+    }
+    input[type="text"] {
+      min-width: 30ch;
     }
   </style>
 
@@ -18,10 +28,12 @@
 <body>
   <section>
     <form>
+      <label for="input_ssidName">SSID</label><br />
       <input type="text" id="input_ssidName" name="ssidName" placeholder="SSID..." onchange="generateQrCode()"
-        required />
+        required /><br/>
+      <label for="input_password">Password</label><br/>
       <input type="text" id="input_password" name="password" placeholder="Password..." onchange="generateQrCode()"
-        required />
+        required /><br/>
       <input type="checkbox" id="input_isHidden" name="isHidden" onchange="generateQrCode()"><label for="isHidden">Is
         hidden
         ?</label><br><br>
